@@ -161,11 +161,9 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ onBack, language 
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <div className="flex">
-                    {item.image && (
-                      <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 mr-4 bg-emerald-50">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
-                    )}
+                    <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 mr-4 bg-emerald-50 flex items-center justify-center">
+                      <Package size={40} className="text-emerald-300" />
+                    </div>
                     <div className="flex-1">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1 mr-4">

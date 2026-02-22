@@ -185,13 +185,13 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
           <div className="flex p-1.5 bg-black/5 dark:bg-white/5 rounded-3xl relative">
             <button 
               onClick={() => onLanguageToggle('en')}
-              className={`flex-1 flex items-center justify-center space-x-2 py-4 rounded-2xl transition-all z-10 ${language === 'en' ? 'bg-white shadow-lg text-emerald-700 dark:bg-white/10 dark:text-white' : 'text-theme-sub'}`}
+              className={`flex-1 flex items-center justify-center space-x-2 py-4 rounded-2xl transition-all z-10 ${language === 'en' ? 'bg-white shadow-lg text-black dark:text-white' : 'text-theme-sub'}`}
             >
               <span className="text-xs font-black uppercase tracking-widest">{t.english}</span>
             </button>
             <button 
               onClick={() => onLanguageToggle('hi')}
-              className={`flex-1 flex items-center justify-center space-x-2 py-4 rounded-2xl transition-all z-10 ${language === 'hi' ? 'bg-white shadow-lg text-emerald-700 dark:bg-white/10 dark:text-white' : 'text-theme-sub'}`}
+              className={`flex-1 flex items-center justify-center space-x-2 py-4 rounded-2xl transition-all z-10 ${language === 'hi' ? 'bg-white shadow-lg text-black dark:text-white' : 'text-theme-sub'}`}
             >
               <span className="text-xs font-black uppercase tracking-widest">{t.hindi}</span>
             </button>

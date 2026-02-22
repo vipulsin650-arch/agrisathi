@@ -11,7 +11,6 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentScreen, onNavigate, language, theme }) => {
-  // Simple dictionary for nav labels
   const navLabels: Record<AppLanguage, { home: string; advice: string; prices: string; schemes: string; profile: string }> = {
     en: { home: "HOME", advice: "ADVICE", prices: "RATES", schemes: "SCHEMES", profile: "USER" },
     hi: { home: "होम", advice: "सलाह", prices: "भाव", schemes: "योजनाएं", profile: "खाता" },
@@ -20,7 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentScreen, onNavigate, lang
     gu: { home: "ઘર", advice: "સલાહ", prices: "ભાવ", schemes: "યોજના", profile: "પ્રોફાઇલ" },
     bn: { home: "বাড়ি", advice: "পরামর্শ", prices: "দাম", schemes: "স্কিম", profile: "প্রোফাইল" },
     ta: { home: "வீடு", advice: "ஆலோசனை", prices: "விலை", schemes: "திட்டம்", profile: "சுயவிவரம்" },
-    te: { home: "ఇల్లు", advice: "సలహా", prices: "ధరలు", schemes: "పథకాలు", profile: "ప్రొఫైల్" },
+    te: { home: "ఇల్లు", advice: "సలహా", prices: "ధరలు", schemes: "পథకాలు", profile: "প্রোఫైల్" },
     kn: { home: "ಮನೆ", advice: "ಸಲಹೆ", prices: "ಬೆಲೆಗಳು", schemes: "ಯೋಜನೆ", profile: "ಪ್ರೊಫೈಲ್" },
     ml: { home: "വീട്", advice: "ഉപദേശം", prices: "വിലകൾ", schemes: "പദ്ധതി", profile: "പ്രൊഫൈൽ" }
   };
@@ -28,12 +27,12 @@ const Navigation: React.FC<NavigationProps> = ({ currentScreen, onNavigate, lang
   const t = navLabels[language] || navLabels['en'];
 
   const navItems = [
-    { icon: Home, label: t.home, screen: AppScreen.HOME },
-    { icon: Sprout, label: t.advice, screen: AppScreen.CROP_ADVICE },
-    { icon: Activity, label: 'SENSOR', screen: AppScreen.SENSOR_DASHBOARD },
-    { icon: TrendingUp, label: t.prices, screen: AppScreen.MARKET_PRICES },
-    { icon: BookOpen, label: t.schemes, screen: AppScreen.SCHEMES },
-    { icon: User, label: t.profile, screen: AppScreen.PROFILE },
+    { icon: Home, label: t.home, screen: AppScreen.HOME, whiteBg: false },
+    { icon: Sprout, label: t.advice, screen: AppScreen.CROP_ADVICE, whiteBg: false },
+    { icon: Activity, label: 'SENSOR', screen: AppScreen.SENSOR_DASHBOARD, whiteBg: true },
+    { icon: TrendingUp, label: t.prices, screen: AppScreen.MARKET_PRICES, whiteBg: false },
+    { icon: BookOpen, label: t.schemes, screen: AppScreen.SCHEMES, whiteBg: false },
+    { icon: User, label: t.profile, screen: AppScreen.PROFILE, whiteBg: false },
   ];
 
   const isDark = theme === 'dark';
@@ -52,13 +51,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentScreen, onNavigate, lang
             onClick={() => onNavigate(item.screen)}
             className={`flex flex-col items-center justify-center py-2 px-1 transition-all duration-300 min-w-[60px] rounded-3xl tap-squish relative ${
               isActive 
-                ? isDark ? 'text-emerald-100 scale-105' : 'text-emerald-900 scale-105' 
+                ? isDark ? 'text-emerald-100 scale-105' : item.whiteBg ? 'text-black scale-105' : 'text-emerald-900 scale-105'
                 : isDark ? 'text-emerald-700/60 hover:text-emerald-500' : 'text-slate-400 hover:text-emerald-600'
             }`}
           >
             {isActive && (
               <div className={`absolute inset-0 rounded-3xl -z-10 ${
-                isDark ? 'bg-emerald-800' : 'bg-emerald-100'
+                isDark ? 'bg-emerald-800' : item.whiteBg ? 'bg-white' : 'bg-emerald-100'
               }`}></div>
             )}
             <item.icon size={26} strokeWidth={isActive ? 2.5 : 2} />
